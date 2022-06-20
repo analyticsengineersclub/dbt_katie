@@ -1,0 +1,28 @@
+version: 2 
+
+models:
+  - name: customers 
+    description: Cleaned up data of our customers 
+    columns:
+      - name: customer_id
+        description: Primary key of the model
+        tests:
+          - unique 
+          - not_null
+  - name: monthly_customers 
+    description: The number of monthly customers who have placed and order
+    columns:
+     - name: signup_month 
+       description: The month of a customers first order 
+       tests:
+        - not_null
+  -  name: dollars_per_customer
+     description: The total dollar amount per customer
+     columns:
+      - name: customer_id 
+        description: The primary key of a model
+        tests: 
+          - not_null
+          - unique 
+      - name: total_dollars 
+        description: The total dollar amount of that customer
