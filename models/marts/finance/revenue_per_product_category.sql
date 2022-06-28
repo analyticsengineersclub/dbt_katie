@@ -21,12 +21,16 @@ orders as (
     on items.product_id = products.product_id 
   order by orders.order_id
 
+),
+
+final as (
+    select 
+        date_trunc(date(order_created_at), day) as day,
+        product_category,
+        sum(order_total) as total_dollars
+    from orders 
+    group by 1,2 
+    order by 1,2 
 )
 
-select 
-  date_trunc(date(order_created_at), day) as day,
-  product_category,
-  sum(order_total) as total_dollars
-from orders 
-group by 1,2 
-order by 1,2 
+select * from final 
