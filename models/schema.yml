@@ -9,6 +9,18 @@ models:
         tests:
           - unique 
           - not_null
+      - name: name 
+        description: First and last name of customer 
+      - name: email 
+        description: Email of customers
+      - name: number_of_orders 
+        description: The total number of orders placed by the customer 
+      - name: first_order_at
+        description: The date of the first order placed of the customer 
+      - name: last_order_at
+        description: The date of the last order placed of customer. Will be the same as first_order_at if they have only placed 1 order.
+      - name: customer_type
+        description: New or Returned. If number of orders = 1 then new, if number of orders > 1 then returned. 
   - name: monthly_customers 
     description: The number of monthly customers who have placed and order
     columns:
@@ -25,4 +37,4 @@ models:
           - not_null
           - unique 
       - name: total_dollars 
-        description: The total dollar amount of that customer
+        description: The total dollar amount of that customer's orders 

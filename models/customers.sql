@@ -17,6 +17,11 @@ with customer_orders as (
 )
  
  
-select *
+select 
+  customer_orders.*,
+  case 
+    when number_of_orders > 1 then 'returned'
+    else 'new'
+    end as customer_type
 from customer_orders
 order by first_order_at
