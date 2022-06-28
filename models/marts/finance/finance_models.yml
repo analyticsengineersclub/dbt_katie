@@ -22,15 +22,6 @@ models:
         - name: total_dollars
           description: total dollar amount of orders summed by customer type & day
     
-    - name: revenue_per_product_category
-      description: The daily amount of revenue per product category
-      columns: 
-        - name: day
-          description: day of order placed 
-        - name: product_category
-          description: product category from order items of placed order 
-        - name: total_dollars
-          description: sum of dollars per product category
         
         
 
