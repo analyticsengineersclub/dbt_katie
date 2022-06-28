@@ -1,0 +1,25 @@
+version: 2 
+
+models:
+    - name: dollars_per_customer
+      description: The total dollar amount per customer
+      columns:
+        - name: customer_id 
+          description: The primary key of a model
+          tests: 
+            - not_null
+            - unique 
+        - name: total_dollars 
+          description: The total dollar amount of that customer's orders 
+  
+    - name: revenue_per_cust_type
+      description: The daily amount of revenue per customer type (New, Returned). Can be further segmented by date in BI tool
+      columns:  
+        - name: day 
+          description: day of order placed 
+        - name: customer_type
+          description: new or returned customer as defined by number of orders placed
+        - name: total_dollars
+          description: total dollar amount of orders summed by customer type & day
+        
+
