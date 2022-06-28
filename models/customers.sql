@@ -7,12 +7,11 @@ with customer_orders as (
    customers.id as customer_id,
    customers.name,
    customers.email,
-   count(orders.id) as number_of_orders,
-   min(created_at) as first_order_at
- --from `analytics-engineers-club.coffee_shop.customers` customers
+   coalesce(count(orders.id),0) as number_of_orders,
+   min(created_at) as first_order_at,
+   max(created_at) as last_order_at
  from {{ source('coffee_shop', 'customers') }} customers 
- --inner join `analytics-engineers-club.coffee_shop.orders` orders
-  inner join {{ source('coffee_shop', 'orders') }} orders  
+ left join {{ source('coffee_shop', 'orders') }} orders  
    on customers.id = orders.customer_id
  group by customers.id, customers.name, customers.email
 )
