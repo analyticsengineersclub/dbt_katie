@@ -18,10 +18,20 @@ models:
         - name: day 
           description: day of order placed 
         - name: customer_type
-          description: new or returned customer as defined by number of orders placed
+          description: new or returned customer as defined by number of orders placed. A customer is new if they have only placed 1 order and returned if they have placed > 1 order
         - name: total_dollars
           description: total dollar amount of orders summed by customer type & day
     
+    - name: revenue_per_product_category
+      description: The daily amount of revenue per product_category 
+      columns:
+        - name: day 
+          description: day of order placed 
+        - name: product_category
+          description: the product category
+        - name: total_dollars
+          description: the summed dollar amount of revenue of order items 
+        
         
         
 
