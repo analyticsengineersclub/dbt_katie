@@ -9,7 +9,7 @@ with last_events as (
 time_diff as (
   select 
     *,
-    date_diff(timestamp, prior_page_visit, second) as diff_in_seconds
+    timestamp_diff(timestamp, prior_page_visit, second) as diff_in_seconds
   from last_events 
 ),
 
