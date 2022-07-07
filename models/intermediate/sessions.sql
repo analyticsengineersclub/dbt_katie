@@ -24,7 +24,7 @@ sessions as (
 select 
   customer_id,
   visitor_id,
-  coalesce(visitor_id,"anon-user") || '-' || sum(is_new_session) over (partition by visitor_id order by timestamp) as session_id,
+  coalesce(customer_id,"anon-user") || '-' || sum(is_new_session) over (partition by visitor_id order by timestamp) as session_id,
   timestamp,
   prior_page_visit,
   page,
