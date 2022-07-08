@@ -32,5 +32,5 @@ select
   total_pageviews.timestamp,
   total_pageviews.page
 from total_pageviews
-left join stitched_id 
+inner join stitched_id 
     on total_pageviews.customer_id = stitched_id.customer_id 
