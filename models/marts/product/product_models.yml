@@ -29,4 +29,9 @@ models:
         description: The month of a customers first order 
         tests:
           - not_null
-          
+  - name: order_items 
+    description: An expanded order items table that combines the order id, product name, product id, product category, and product price 
+
+  - name: visitor_session_stats 
+    description: A rollup of stats grouped by visitor about that session
+
