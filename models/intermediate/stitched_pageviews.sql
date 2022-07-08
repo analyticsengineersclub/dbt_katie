@@ -23,7 +23,11 @@ stitched_id as (
 select 
   total_pageviews.pageview_id,
   total_pageviews.customer_id,
-  coalesce(stitched_id.first_visit_id, total_pageviews.visitor_id) as visitor_id,
+  --coalesce(stitched_id.first_visit_id, total_pageviews.visitor_id) as visitor_id,
+    case 
+    when total_pageviews.customer_id is null then total_pageviews.visitor_id 
+    else stitched_id.first_visit_id 
+    end as visitor_id,
   total_pageviews.device_type,
   total_pageviews.timestamp,
   total_pageviews.page
