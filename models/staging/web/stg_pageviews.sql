@@ -1,13 +1,21 @@
-with pageviews_source as (
-    select *
-    from {{ source('web_tracking', 'pageviews')}}
+
+with pageviews as (
+    select * from  {{ source('web_tracking', 'pageviews')}}
 ),
 
-renamed_pageviews as (
-    select 
-        * except(id),
-        id as pageview_id
-    from pageviews_source
+visitors as (
+    select * from {{ ref('visitors')}}
+),
+
+joined as (
+    select
+        pageviews.* except(id),
+        id as pageview_id,
+        coalesce(visitors.first_customer_id, pageviews.visitor_id) as blended_user_id,
+        visitors.first_visitor_id
+    from pageviews
+    left join visitors
+        on pageviews.visitor_id = visitors.visitor_id
 )
 
-select * from renamed_pageviews
+select * from joined 

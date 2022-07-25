@@ -1,5 +1,5 @@
 with pageviews as (
-  select * from {{ ref('stitched_pageviews')}}
+  select * from {{ ref('stg_pageviews')}}
 ),
 
 last_events as (
