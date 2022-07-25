@@ -9,7 +9,7 @@ with order_items as (
 
 select
   date_trunc(order_created_at, month) as date_month,
-  {% for product_category in ['coffee_beans', 'merch', 'brewing_supples'] %}
+  {% for product_category in ['coffee_beans', 'merch', 'brewing_supplies'] %}
 sum(case when product_category = '{{product_category}}' then price end) as {{product_category}}_amount,
 {% endfor %}
 sum(price) as total_product_price
