@@ -2,6 +2,10 @@ with orders as (
   select * from {{ ref('stg_orders') }}
 ),
 
+all_weeks as (
+  select * from {{ ref('all_weeks') }}
+),
+
 weekly_orders as (
   select 
     customer_id,
@@ -24,14 +28,14 @@ customer_all_weeks as (
   select  
     customer_first_order.customer_id,
     customer_first_order.first_week,
-    weekly_orders.date_week,
-    date_diff(datetime(weekly_orders.date_week), datetime(customer_first_order.first_week), week) as week_num
+    all_weeks.date_week,
+    date_diff(datetime(all_weeks.date_week), datetime(customer_first_order.first_week), week) as week_num
   from customer_first_order
-  inner join weekly_orders 
-    on customer_first_order.first_week <= weekly_orders.date_week
+  inner join all_weeks 
+    on customer_first_order.first_week <= all_weeks.date_week
 ),
 
-joined as (
+final as (
   select 
     * except(weekly_spend),
     coalesce(weekly_spend, 0) as weekly_spend,
@@ -44,4 +48,4 @@ joined as (
     using(customer_id, date_week)
 )
 
-select * from joined 
+select * from final 
