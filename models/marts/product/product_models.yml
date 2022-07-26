@@ -13,6 +13,8 @@ models:
         description: First and last name of customer 
       - name: email 
         description: Email of customers
+        tests:
+          - email_format
       - name: number_of_orders 
         description: The total number of orders placed by the customer 
       - name: first_order_at

@@ -37,8 +37,3 @@ models:
     example:
       +materialized: view
     
-# vars:
-#   github_source:
-#     github_database: aec-students
-#     github_schema: dbt_katie
-#   github__using_repo_team: false
