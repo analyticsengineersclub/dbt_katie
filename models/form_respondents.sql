@@ -1,9 +1,13 @@
 {{ config(
-    materialized='table'
+    materialized='incremental'
 ) }}
 
 with events as (
-    select * from {{ source('advanced_dbt_examples', 'form_events') }}
+    select * 
+    from {{ source('advanced_dbt_examples', 'form_events') }}
+    {% if is_incremental() %}
+    where timestamp >= (select max(timestamp) from {{ this }} )
+    {% endif %}
 ),
 
 aggregated as (
