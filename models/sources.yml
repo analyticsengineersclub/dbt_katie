@@ -38,10 +38,17 @@ sources:
             tests: 
               - unique 
               - not_null
+
   - name: web_tracking
     project: analytics-engineers-club
     tables:
       - name: pageviews 
+
+  - name: advanced_dbt_examples
+    project: analytics-engineers-club
+    tables:
+      - name: form_events
+
       
 
             
