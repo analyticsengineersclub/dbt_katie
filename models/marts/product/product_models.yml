@@ -21,17 +21,13 @@ models:
         description: The date of the last order placed of customer. Will be the same as first_order_at if they have only placed 1 order.
       - name: customer_type
         description: New or Returned. If number of orders = 1 then new, if number of orders > 1 then returned. 
-
   - name: monthly_customers 
     description: The number of monthly customers who have placed and order
     columns:
       - name: signup_month 
         description: The month of a customers first order 
         tests:
-          - not_null
+          - not_null        
   - name: order_items 
     description: An expanded order items table that combines the order id, product name, product id, product category, and product price 
-
-  - name: visitor_session_stats 
-    description: A rollup of stats grouped by visitor about that session
 

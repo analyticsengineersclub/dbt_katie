@@ -1,0 +1,14 @@
+version: 2 
+
+# models:
+#   - name: stg_product_prices 
+#     description: Cleaned up data of of product prices
+#     columns:
+#       - name: price
+#         description: Price of item
+#         tests:
+#         - dbt_utils.mutually_exclusive_ranges:
+#           lower_bound_column: created_at
+#           upper_bound_column: ended_at
+#           gaps: not_allowed
+
